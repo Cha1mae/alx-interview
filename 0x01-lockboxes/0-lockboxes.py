@@ -2,6 +2,10 @@
 
 def canUnlockAll(boxes):
     """Determine if all boxes can be opened."""
+    # Check if boxes is a list and if it's not empty
+    if type(boxes) is not list or len(boxes) == 0:
+        return False
+
     n = len(boxes)
     keys = [0]
     opened = [False] * n
@@ -14,4 +18,9 @@ def canUnlockAll(boxes):
                 keys.append(box)
                 opened[box] = True
 
-    return all(opened)
+    # Check if all boxes can be opened
+    for G in range(1, n):
+        if not opened[G]:
+            return False
+
+    return True
