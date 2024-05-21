@@ -3,6 +3,7 @@
 kantsna checker yt7t
 """
 
+
 def validUTF8(data):
     count = 0
     for num in data:
