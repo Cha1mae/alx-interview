@@ -1,23 +1,29 @@
 #!/usr/bin/python3
 """
-kantsna checker yt7t
+validation task :)
 """
 
 
 def validUTF8(data):
-    count = 0
-    for num in data:
-        if count == 0:
-            if (num >> 5) == 0b110:
-                count = 1
-            elif (num >> 4) == 0b1110:
-                count = 2
-            elif (num >> 3) == 0b11110:
-                count = 3
-            elif (num >> 7):
+    """
+    data: int list
+    Return: is True if data is valid UTF-8
+    encoding, if no return False
+    """
+    c_bite = 0
+
+    for id in data:
+        if c_bite == 0:
+            if id >> 5 == 0b110 or id >> 5 == 0b1110:
+                c_bite = 1
+            elif id >> 4 == 0b1110:
+                c_bite = 2
+            elif id >> 3 == 0b11110:
+                c_bite = 3
+            elif id >> 7 == 0b1:
                 return False
         else:
-            if (num >> 6) != 0b10:
+            if id >> 6 != 0b10:
                 return False
-            count -= 1
-    return count == 0
+            c_bite -= 1
+    return c_bite == 0
