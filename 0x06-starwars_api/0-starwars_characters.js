@@ -25,3 +25,4 @@ async function getCharactersOfMovie(movieId) {
 
 const movieId = process.argv[2];
 getCharactersOfMovie(movieId);
+
