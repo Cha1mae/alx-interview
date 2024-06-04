@@ -5,14 +5,14 @@ const util = require('util');
 
 const requestPromise = util.promisify(request);
 
-async function getCharacterName(url) {
+async function getCharacterName (url) {
   const response = await requestPromise(url);
   if (response.statusCode === 200) {
     console.log(JSON.parse(response.body).name);
   }
 }
 
-async function getCharactersOfMovie(movieId) {
+async function getCharactersOfMovie (movieId) {
   const url = `https://swapi.dev/api/films/${movieId}/`;
   const response = await requestPromise(url);
   if (response.statusCode === 200) {
@@ -25,4 +25,3 @@ async function getCharactersOfMovie(movieId) {
 
 const movieId = process.argv[2];
 getCharactersOfMovie(movieId);
-
